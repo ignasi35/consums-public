@@ -2,16 +2,16 @@
 
 <head>
     <script src="dygraph.min.js"></script>
-    <link rel="stylesheet" href="dygraph.min.css" />
+    <link rel="stylesheet" href="dygraph.min.css"/>
 </head>
 
 <body>
-    <div id="graphdiv2"
-    style="width:98%; height:98%;"></div>
-  <script type="text/javascript">
+<div id="graphdiv2"
+     style="width:98%; height:98%;"></div>
+<script type="text/javascript">
     g2 = new Dygraph(
       document.getElementById("graphdiv2"),
-      "pivot-report.csv", // path to CSV file
+      "$$CSV_FILENAME$$", // path to CSV file
       {
         showRoller: true,
         logscale: false,
@@ -19,7 +19,8 @@
         showRangeSelector: true,
       }          // options
     );
-  </script>
+
+</script>
 </body>
 
 </html>

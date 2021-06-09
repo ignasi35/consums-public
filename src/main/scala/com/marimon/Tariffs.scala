@@ -29,12 +29,8 @@ case class Tariff(
   }
 
   def powerCost(lowPowerContract: Double, highPowerContract: Double)(metric: HourlyMetric): Double = {
-    level(metric) match {
-      case LowPeriod =>
-        powerLowPerHour * lowPowerContract
-      case _ =>
-        powerHighPerHour * highPowerContract
-    }
+    // la potencia contractada es paga per dia sencer, no es pondera segons la hora del dia
+    powerLowPerHour * lowPowerContract + powerHighPerHour * highPowerContract
   }
 
   private def level(metric: HourlyMetric): TariffPeriod = {
@@ -52,7 +48,7 @@ case class Tariff(
 }
 
 object Tariffs {
-  val SomEnergiaLegacy = Tariff("SomEnergia legacy", 0.127, 0.127, 0.127, 38.04, 38.04)
+  val SomEnergiaLegacy = Tariff("SomEnergia legacy", 0.127, 0.127, 0.127, 38.04, 0)
   val SomEnergia = Tariff("SomEnergia", 0.106837, 0.161527, 0.284897, 3.435303, 40.634769)
   val LuceraFixe = Tariff("Lucera Preu fixe", 0.106000, 0.160000, 0.279000, 1.812000, 39.012000, 5)
   val LucerMercatLliure = Tariff("Lucera Mercat Lliure", 0.069000, 0.131000, 0.250000, 1.812000, 39.012000, 5)
@@ -67,8 +63,8 @@ object Tariffs {
     LuceraFixe,
     // LucerMercatLliure,
     HolaLuz,
-    // Aldro,
-    // Bulb,
+    Aldro,
+    Bulb,
     FactorEnergia
   )
 

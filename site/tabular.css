@@ -1,0 +1,13 @@
+table { border-collapse:collapse; table-layout:fixed;}
+th { background:#F5F5F5; }
+td,th { border:1px solid #DDD; padding:6px; empty-cells:show; }
+td,th {
+  text-align:right;
+}
+td.default {
+  display:table-cell;
+  text-align:right;
+}
+td.weekend {
+  background-color: #F0E68C ;
+}
